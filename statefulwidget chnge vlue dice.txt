@@ -1,0 +1,58 @@
+import 'package:flutter/material.dart';
+void main(){
+  return runApp(
+      MaterialApp(
+        home: Scaffold(
+          backgroundColor: Colors.lightBlueAccent,
+          appBar:AppBar(
+            title: Text('Dice app'),
+            backgroundColor: Colors.teal,
+          ),
+          body: Dicepage(),
+
+        ),
+      )
+  );
+}
+class Dicepage extends StatefulWidget {
+  const Dicepage({Key? key}) : super(key: key);
+
+  @override
+  State<Dicepage> createState() => _DicepageState();
+}
+
+class _DicepageState extends State<Dicepage> {
+  int left_image = 1;
+
+  @override
+  Widget build(BuildContext Context) {
+    var image = 4;
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: FlatButton(
+
+              onPressed: () {
+                setState(() {
+                  left_image=5;
+                
+                });
+
+                print('value &left-image');
+              },
+              child: Image.asset('images/dice$left_image.png'),
+            ),
+          ),
+
+          Expanded(
+            child: FlatButton(
+              onPressed: () {},
+              child: Image.asset('images/dice2.png'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
