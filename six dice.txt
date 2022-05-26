@@ -1,135 +1,171 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-void main(){
-  return runApp(
-      MaterialApp(
-        home: Scaffold(
-          backgroundColor: Colors.lightBlueAccent,
-          appBar:AppBar(
-            title: Text('Dice app'),
-            backgroundColor: Colors.teal,
-          ),
-          body: Dicepage(),
 
+void main() {
+  runApp(MyDiceApp());
+}
+
+class MyDiceApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.lightBlueAccent,
+        appBar: AppBar(
+          centerTitle: true,
+
+          backgroundColor: Colors.purple,
         ),
-      )
-  );
-}
-class Dicepage extends StatefulWidget {
-  const Dicepage({Key? key}) : super(key: key);
-
-  @override
-  State<Dicepage> createState() => _DicepageState();
+        body: ClickAblbeDiceApp(),
+      ),
+    );
+  }
 }
 
-class _DicepageState extends State<Dicepage> {
-  int left_image = 1;
-  int right_image = 1;
-  int top_image=2;
-  int botm_image=3;
-  int up_image=4;
-  int down_image=5;
-
+class ClickAblbeDiceApp extends StatefulWidget {
   @override
-  Widget build(BuildContext Context) {
+  _ClickAblbeDiceAppState createState() => _ClickAblbeDiceAppState();
+}
 
+class _ClickAblbeDiceAppState extends State<ClickAblbeDiceApp> {
+  int top_left = 5;
+  int top_right = 6;
+  int bottom_left = 6;
+  int bottom_right = 1;
+  int up_left=2;
+  int down_right=3;
+  int sum1=0;
+  int sum2=0;
+  int sum3=0;
+  int sum4=0;
+  int sum5=0;
+  int sum6=0;
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Row(
-        children: <Widget>[
+        children: [
+          Expanded(child:Text(
+            "RESULT:$sum1",
+            textAlign:TextAlign.center,
+            overflow:TextOverflow.ellipsis,
+            style:const TextStyle(fontWeight: FontWeight.bold),
+
+          )),
           Expanded(
-            child: FlatButton(
-
-              onPressed: () {
-                setState(() {
-                  left_image=Random().nextInt(5)+1;
-
-                });
-
-                print('value &left_image');
-              },
-              child: Image.asset('images/dice$left_image.png'),
-            ),
-          ),
-
-          Expanded(
-            child: FlatButton(
-              minWidth: 50.0,
-              onPressed: () {
-                setState(() {
-                  right_image=Random().nextInt(4)+1;
-
-                });
-
-                print('value &right_image');
-              },
-              child: Image.asset('images/dice$right_image.png'),
-            ),
-          ),
-          Expanded(
-            child: FlatButton(
-              minWidth: 50.0,
-              onPressed: () {
-                setState(() {
-                  top_image=Random().nextInt(4)+1;
-
-                });
-
-                print('value &right_image');
-              },
-              child: Image.asset('images/dice$top_image.png'),
-            ),
-          ),
-          Container(
-           child: Expanded(
-              child: FlatButton(
-                minWidth: 50.0,
+              child: TextButton(
+                child: Image.asset("images/dice$top_left.png"),
                 onPressed: () {
                   setState(() {
-                    botm_image=Random().nextInt(4)+1;
+                    top_left = Random().nextInt(6) + 1;
+                    sum1=sum1+top_left;
 
                   });
-
-                  print('value &right_image');
+                  print(top_left);
                 },
-                child: Image.asset('images/dice$botm_image.png'),
-              ),
-            ),
-          ),
+              )),
+          Expanded(child:Text(
+            "RESULT:$sum2",
+            textAlign:TextAlign.center,
+            overflow:TextOverflow.ellipsis,
+            style:const TextStyle(fontWeight: FontWeight.bold),
 
-          Container(
-            child: Expanded(
-              child: FlatButton(
-                minWidth: 50.0,
+          )),
+          Expanded(
+              child: TextButton(
+                child: Image.asset("images/dice$top_right.png"),
                 onPressed: () {
                   setState(() {
-                    up_image=Random().nextInt(4)+1;
-
+                    top_right = Random().nextInt(6) + 1;
+                    sum2=sum2+top_right;
                   });
-
-                  print('value &right_image');
+                  print(top_right);
                 },
-                child: Image.asset('images/dice$up_image.png'),
-              ),
-            ),
-          ),
+              )),
+          Expanded(child:Text(
+            "RESULT:$sum3",
+            textAlign:TextAlign.center,
+            overflow:TextOverflow.ellipsis,
+            style:const TextStyle(fontWeight: FontWeight.bold),
 
-          Container(
-            child: Expanded(
-              child: FlatButton(
-                minWidth: 50.0,
+          )),
+          Expanded(
+              child: TextButton(
+                child: Image.asset("images/dice$bottom_left.png"),
                 onPressed: () {
                   setState(() {
-                    down_image=Random().nextInt(4)+1;
-
+                    bottom_left = Random().nextInt(6) + 1;
+                    sum3=sum3+bottom_left;
                   });
-
-                  print('value &right_image');
+                  print(bottom_left);
                 },
-                child: Image.asset('images/dice$down_image.png'),
-              ),
-            ),
-          )
+              )),
+          Expanded(child:Text(
+            "RESULT:$sum4",
+            textAlign:TextAlign.center,
+            overflow:TextOverflow.ellipsis,
+            style:const TextStyle(fontWeight: FontWeight.bold),
+
+          )),
+          Expanded(
+              child: TextButton(
+                child: Image.asset("images/dice$bottom_right.png"),
+                onPressed: () {
+                  setState(() {
+                    bottom_right = Random().nextInt(6) + 1;
+                    sum4=sum4+bottom_right;
+                  });
+                  print(bottom_right);
+                },
+              )),
+
+          Expanded(
+              child: TextButton(
+                child: Image.asset("images/dice$up_left.png"),
+                onPressed: () {
+                  setState(() {
+                    up_left= Random().nextInt(6) + 1;
+                    sum5=sum5+up_left;
+                  });
+                  print(up_left);
+                },
+              )),
+          Expanded(child:Text(
+            "RESULT:$sum5",
+            textAlign:TextAlign.center,
+            overflow:TextOverflow.ellipsis,
+            style:const TextStyle(fontWeight: FontWeight.bold),
+
+          )),
+          Expanded(
+              child: TextButton(
+                child: Image.asset("images/dice$down_right.png"),
+                onPressed: () {
+                  setState(() {
+                    down_right = Random().nextInt(6) + 1;
+                    sum6=sum6+down_right;
+                  });
+                  print(down_right);
+                },
+              )),
+          Expanded(child:Text(
+            "RESULT:$sum6",
+            textAlign:TextAlign.center,
+            overflow:TextOverflow.ellipsis,
+            style:const TextStyle(fontWeight: FontWeight.bold),
+
+          )),
+
+          Container(
+              child: Expanded(child:Text(
+              "same:$sum1=$sum2"
+                  
+
+    ),
+              )
+    )
         ],
+
       ),
     );
   }
