@@ -1,0 +1,136 @@
+import 'package:flutter/material.dart';
+import 'dart:math';
+void main(){
+  return runApp(
+      MaterialApp(
+        home: Scaffold(
+          backgroundColor: Colors.lightBlueAccent,
+          appBar:AppBar(
+            title: Text('Dice app'),
+            backgroundColor: Colors.teal,
+          ),
+          body: Dicepage(),
+
+        ),
+      )
+  );
+}
+class Dicepage extends StatefulWidget {
+  const Dicepage({Key? key}) : super(key: key);
+
+  @override
+  State<Dicepage> createState() => _DicepageState();
+}
+
+class _DicepageState extends State<Dicepage> {
+  int left_image = 1;
+  int right_image = 1;
+  int top_image=2;
+  int botm_image=3;
+  int up_image=4;
+  int down_image=5;
+
+  @override
+  Widget build(BuildContext Context) {
+
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: FlatButton(
+
+              onPressed: () {
+                setState(() {
+                  left_image=Random().nextInt(5)+1;
+
+                });
+
+                print('value &left_image');
+              },
+              child: Image.asset('images/dice$left_image.png'),
+            ),
+          ),
+
+          Expanded(
+            child: FlatButton(
+              minWidth: 50.0,
+              onPressed: () {
+                setState(() {
+                  right_image=Random().nextInt(4)+1;
+
+                });
+
+                print('value &right_image');
+              },
+              child: Image.asset('images/dice$right_image.png'),
+            ),
+          ),
+          Expanded(
+            child: FlatButton(
+              minWidth: 50.0,
+              onPressed: () {
+                setState(() {
+                  top_image=Random().nextInt(4)+1;
+
+                });
+
+                print('value &right_image');
+              },
+              child: Image.asset('images/dice$top_image.png'),
+            ),
+          ),
+          Container(
+           child: Expanded(
+              child: FlatButton(
+                minWidth: 50.0,
+                onPressed: () {
+                  setState(() {
+                    botm_image=Random().nextInt(4)+1;
+
+                  });
+
+                  print('value &right_image');
+                },
+                child: Image.asset('images/dice$botm_image.png'),
+              ),
+            ),
+          ),
+
+          Container(
+            child: Expanded(
+              child: FlatButton(
+                minWidth: 50.0,
+                onPressed: () {
+                  setState(() {
+                    up_image=Random().nextInt(4)+1;
+
+                  });
+
+                  print('value &right_image');
+                },
+                child: Image.asset('images/dice$up_image.png'),
+              ),
+            ),
+          ),
+
+          Container(
+            child: Expanded(
+              child: FlatButton(
+                minWidth: 50.0,
+                onPressed: () {
+                  setState(() {
+                    down_image=Random().nextInt(4)+1;
+
+                  });
+
+                  print('value &right_image');
+                },
+                child: Image.asset('images/dice$down_image.png'),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
