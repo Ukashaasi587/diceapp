@@ -1,0 +1,45 @@
+import 'package:flutter/material.dart';
+void main(){
+  return runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.lightBlueAccent,
+        appBar:AppBar(
+          title: Text('Dice app'),
+          backgroundColor: Colors.teal,
+        ),
+        body: Dicepage(),
+
+      ),
+    )
+  );
+}
+class Dicepage extends StatelessWidget{
+  var image=1;
+  @override
+  Widget build(BuildContext Context){
+    var image=4;
+    return Center(
+      child: Row(
+        children:<Widget> [
+          Expanded(
+            child: FlatButton(
+
+                onPressed: () {  },
+                child: Image.asset('images/dice$image.png'),
+              ),
+            ),
+
+          Expanded(
+            child:FlatButton(
+              onPressed: (){},
+          child: Image.asset('images/dice2.png'),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+}
